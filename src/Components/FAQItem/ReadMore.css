@@ -1,0 +1,14 @@
+/* ReadMore.css */
+.read-more {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Show only 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line; /* Preserve line breaks */
+    margin-bottom: 1rem;
+  }
+  
+  .read-more.expanded {
+    -webkit-line-clamp: initial; /* Show all lines when expanded */
+  }

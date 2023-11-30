@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ @font-face  {
+  font-family: "Tajwal";
+  src: local("Tajwal"),
+    url(./fonts/Tajawal-Black.ttf) format("ttf"),
+    url(./fonts/Tajawal-Bold.ttf) format("ttf"),
+    url(./fonts/Tajawal-ExtraBold.ttf) format("ttf"),
+    url(./fonts/Tajawal-ExtraLight.ttf) format("ttf"),
+    url(./fonts/Tajawal-Light.ttf) format("ttf"),
+    url(./fonts/Tajawal-Medium.ttf) format("ttf"),
+    url(./fonts/Tajawal-Regular.ttf) format("ttf");
+}
+
+body {
+  margin: 0;
+  font-family: "Tajwal", Georgia, "Times New Roman", Times, serif;
+}

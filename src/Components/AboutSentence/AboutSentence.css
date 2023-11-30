@@ -1,0 +1,25 @@
+/* AboutSentence.css */
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.expanded {
+  opacity: 1;
+}
+
+.read-more-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.read-more {
+  color: #007bff; /* Initial color when collapsed */
+}
+
+.read-less {
+  color: #dc3545; /* Color when expanded */
+}

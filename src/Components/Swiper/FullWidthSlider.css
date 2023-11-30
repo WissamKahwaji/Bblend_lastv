@@ -1,0 +1,25 @@
+.full-width-slider {
+  width: 100%;
+  max-width: 100%;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.full-width-slider:focus {
+  outline: none;
+}
+
+.slick-prev {
+  left: 30px !important;
+  z-index: 10 !important;
+}
+
+.slick-prev::before {
+  font-size: 30px !important;
+}
+.slick-next {
+  right: 0px;
+}
