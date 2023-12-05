@@ -1,10 +1,8 @@
-import { FaQuestion } from "react-icons/fa";
 import {
   MdOutlineFaceRetouchingNatural,
   MdOutlineLocalOffer,
 } from "react-icons/md";
 import { LiaGiftsSolid } from "react-icons/lia";
-import { AiOutlineQuestion } from "react-icons/ai";
 import { BsQuestionLg } from "react-icons/bs";
 export const iconsCollectionContent = [
   {
@@ -28,7 +26,7 @@ export const iconsCollectionContent = [
   {
     icon: <LiaGiftsSolid className={`text-3xl lg:text-[5rem] text-pink-200`} />,
     title: "Packages",
-    path: "/products/Packages",
+    path: "/products?type=Package",
   },
   {
     icon: (

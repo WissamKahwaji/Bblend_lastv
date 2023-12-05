@@ -32,7 +32,7 @@ const SingleProductCard = ({
       price: price,
       desc: desc,
       quantity: 1,
-      size: size,
+      size,
       img: src,
       weight: weight,
     };
@@ -49,7 +49,7 @@ const SingleProductCard = ({
   const logoData = useSelector((state) => state.logoSlice);
 
   return (
-    <div className="  w-full overflow-hidden  sm:w-[230px]   lg:w-[255px] xl:w-[300px]  my-4  md:my-3">
+    <div className=" flex flex-col gap-y-4 w-full overflow-hidden  sm:w-[230px]   lg:w-[255px] xl:w-[300px]  my-4  md:my-3">
       <Link to={path} className={`flex  flex-col  items-center ${className}`}>
         <div
           className={`  relative   h-[180px] w-[180px]   lg:w-[255px] lg:h-[255px]  xl:w-[300px] xl:h-[300px]   overflow-hidden`}

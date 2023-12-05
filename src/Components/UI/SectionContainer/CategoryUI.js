@@ -33,7 +33,9 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
         <h2 className={`text-sm md:text-4xl font-bold ${styles["play-font"]}`}>
           {t(CategoryUIData.title)}
         </h2>
-        <Link to={path}>{t("Check All")}</Link>
+        <Link className="text-xl font-semibold" to={path}>
+          {t("Check All")}
+        </Link>
       </div>
       <ul
         className={`grid lg:grid-cols-3  grid-cols-2 justify-center gap-1 items-center   `}

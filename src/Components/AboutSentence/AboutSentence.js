@@ -24,7 +24,7 @@ const AboutSentence = ({ aboutSentenceParagraph }) => {
           onClick={toggleFullText}
           className="text-blue-500 hover:underline focus:outline-none"
         >
-          {showFullText ? t("Read Less") : t("Read More")}
+          {showFullText ? t("readLess") : t("readMore")}
         </button>
       )}
     </div>

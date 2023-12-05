@@ -14,18 +14,16 @@ const CheckOutForm = () => {
   const [isOutSideUAE, setIsOutSideUAE] = useState(null);
   const [isAllowedToCheckOut, setIsAllowedToCheckOut] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
-
+  const { t } = useTranslation();
   const handlePaymentMethodChange = (e) => {
     setPaymentMethod(e.target.value);
   };
-  const [deliveryCost, setDeliveryCost] = useState(
-    "Please select the country First"
-  );
+  const [deliveryCost, setDeliveryCost] = useState(t(""));
   const [totalWeight, setTotalWeight] = useState(0);
   const [isUAE, setIsUAE] = useState(false);
   const colorsData = useSelector((state) => state.colorsSlice);
   const cartData = useSelector((state) => state.cartSlice);
-  
+
   const hStyle = {
     color: `${colorsData.mainColor}`,
   };
@@ -85,7 +83,6 @@ const CheckOutForm = () => {
   };
 
   useEffect(() => {
-    
     if (window.localStorage.getItem("userInfo")) {
       setSelectedCountry(
         JSON.parse(window.localStorage.getItem("userInfo")).userCountry
@@ -97,7 +94,7 @@ const CheckOutForm = () => {
     if (selectedCountry === "United Arab Emirates") {
       setIsOutSideUAE(false);
       setIsAllowedToCheckOut(true);
-      
+
       setDeliveryCost(30);
       window.localStorage.setItem("deliveryCost", JSON.stringify(deliveryCost));
       window.localStorage.setItem(
@@ -128,10 +125,8 @@ const CheckOutForm = () => {
         );
         if (containsKeyword) {
           isAllowedToCheckOut = false;
-          
-          window.alert(
-            "Sorry Only Toner, Henna, Sidr and Oil are qualified for shipping outside UAE"
-          );
+
+          window.alert(t("alertShipping"));
           break; // Stop the loop as soon as a keyword is found
         }
       }
@@ -182,19 +177,18 @@ const CheckOutForm = () => {
     totalWeight,
   ]);
 
-  const { t } = useTranslation();
   return (
     <PageContainer>
       <Form method="post">
         <h3 style={hStyle} className={`text-2xl font-bold mb-2`}>
-          Personal Information
+          {t("personalInformation")}
         </h3>
         <div className={`grid grid-rows-2 grid-cols-2 gap-5 mb-8`}>
           <Input
-            label="Your Name"
+            label={t("name")}
             input={{
               required: true,
-              placeholder: "Enter Here Your Name",
+              placeholder: t("enterName"),
               name: "user_name",
               type: "text",
               defaultValue:
@@ -204,10 +198,10 @@ const CheckOutForm = () => {
             example="E.G. John Doe"
           />
           <Input
-            label="Mobile Number"
+            label={t("mobileNumber")}
             input={{
               required: true,
-              placeholder: "Enter Here Your Mobile Number",
+              placeholder: t("enterMobileNumber"),
               name: "user_mobile_number",
               type: "number",
               defaultValue:
@@ -218,10 +212,10 @@ const CheckOutForm = () => {
             example="E.G. +971XXXXXXXXX"
           />
           <Input
-            label="Mail ID"
+            label={t("emailId")}
             input={{
               required: true,
-              placeholder: "Enter Here Your Mail ID",
+              placeholder: t("enterEmailId"),
               name: "user_mail_id",
               type: "mail",
               defaultValue:
@@ -232,12 +226,12 @@ const CheckOutForm = () => {
           />
         </div>
         <h3 style={hStyle} className={`text-2xl font-bold mb-2`}>
-          Address Details
+          {t("addressDetails")}
         </h3>
         <div className={`grid grid-rows-2 grid-cols-2 gap-5 mb-8`}>
           <div className={`flex flex-col`}>
             <label htmlFor="user_country" className={`mb-2`}>
-              Country
+              {t("country")}
             </label>
             <select
               style={inputStyle}
@@ -249,7 +243,7 @@ const CheckOutForm = () => {
               onChange={handleCountryChange}
             >
               <option value="" disabled>
-                Select your country
+                {t("selectCountry")}
               </option>
               {Object.keys(citiesByCountry).map((country) => (
                 <option key={country} value={country}>
@@ -268,7 +262,7 @@ const CheckOutForm = () => {
           {selectedCountry && (
             <div className={`flex flex-col`}>
               <label htmlFor="user_city" className={`mb-2`}>
-                City
+                {t("city")}
               </label>
               <select
                 style={inputStyle}
@@ -280,7 +274,7 @@ const CheckOutForm = () => {
                 onChange={handleCityChange}
               >
                 <option value="" disabled>
-                  Select your city
+                  {t("selectCity")}
                 </option>
                 {citiesByCountry[selectedCountry].map((city) => (
                   <option key={city} value={city}>
@@ -291,10 +285,10 @@ const CheckOutForm = () => {
             </div>
           )}
           <Input
-            label="Street"
+            label={t("street")}
             input={{
               required: true,
-              placeholder: "Enter Here Your Street Name",
+              placeholder: t("enterStreetName"),
               name: "user_street",
               type: "text",
               defaultValue:
@@ -303,10 +297,10 @@ const CheckOutForm = () => {
             }}
           />
           <Input
-            label="Building"
+            label={t("building")}
             input={{
               required: true,
-              placeholder: "Enter Here Your Building Name",
+              placeholder: t("enterBuildingName"),
               name: "user_building",
               type: "text",
               defaultValue:
@@ -316,10 +310,10 @@ const CheckOutForm = () => {
             }}
           />
           <Input
-            label="Nearby"
+            label={t("nearBy")}
             input={{
               required: true,
-              placeholder: "Enter Here a place Nearby to you",
+              placeholder: t("enterNearBy"),
               name: "user_nearby",
               type: "text",
               defaultValue:
@@ -329,26 +323,26 @@ const CheckOutForm = () => {
           />
         </div>
         <h3 style={hStyle} className={`text-2xl font-bold mb-2`}>
-          Note
+          {t("note")}
         </h3>
         <div className={`grid grid-cols-1 mb-8`}>
           <label></label>
           <textarea
             className={`outline-none rounded-md p-1`}
             style={inputStyle}
-            placeholder="Leave a Note if You have any"
+            placeholder={t("enterNote")}
             name="user_note"
           />
         </div>
 
         <input type="hidden" value={JSON.stringify(cartData)} name="cart" />
         <div className={`p-2 w-full md:w-[50%] mx-auto border rounded-lg`}>
-          <h2 className={`text-2xl font-semibold mb-2`}>Your Total Price</h2>
+          <h2 className={`text-2xl font-semibold mb-2`}>{t("totalPrice")}</h2>
           <div>
             <p
               className={`p-1 flex items-center justify-between border-b text-lg`}
             >
-              <span>Items Price</span>
+              <span>{t("itemsPrice")}</span>
               <span>
                 {+JSON.parse(window.localStorage.getItem("cartTotalPrice"))}
               </span>
@@ -356,7 +350,7 @@ const CheckOutForm = () => {
             <p
               className={`p-1 flex items-center justify-between border-b text-lg`}
             >
-              <span>Delivery Fees</span>
+              <span>{t("deliveryFees")}</span>
               <span>
                 {typeof deliveryCost === "string"
                   ? deliveryCost
@@ -366,7 +360,7 @@ const CheckOutForm = () => {
             <p
               className={`p-1 flex items-center justify-between text-xl font-medium`}
             >
-              <span>Total</span>
+              <span>{t("total")}</span>
               <span>
                 {+JSON.parse(window.localStorage.getItem("cartTotalPrice")) +
                   +deliveryCost}
@@ -376,7 +370,7 @@ const CheckOutForm = () => {
         </div>
         <div className={`flex flex-col mt-4`}>
           <h3 style={hStyle} className={`text-2xl  text-center font-bold mb-2`}>
-            Payment Method
+            {t("paymentMethod")}
           </h3>
           <div className={`flex w-80 mx-auto items-center mb-4`}>
             <input
@@ -386,7 +380,7 @@ const CheckOutForm = () => {
               className={`w-5 h-5 mr-2`}
               onChange={handlePaymentMethodChange}
             />
-            <label className={`mr-2 text-xl`}>Cash On Delivery</label>
+            <label className={`mr-2 text-xl`}>{t("cashOnDelivery")}</label>
             <BsCashStack className={`text-green-500 text-3xl`} />
           </div>
           <div className={`flex w-80 mx-auto  items-center`}>
@@ -397,7 +391,7 @@ const CheckOutForm = () => {
               className={`w-5 h-5 mr-2`}
               onChange={handlePaymentMethodChange}
             />
-            <label className={`mr-2 text-xl`}>Card</label>
+            <label className={`mr-2 text-xl`}>{t("card")}</label>
             <div className={`flex items-center`}>
               <img src={visaIcon} alt="visa" className={`w-10`} />
               <img src={masterIcon} alt="master" className={`w-10`} />
@@ -410,7 +404,7 @@ const CheckOutForm = () => {
             style={checkOutButtonStyle}
             className={`px-4 py-1 rounded-lg mx-auto w-full inline-block mt-4 disabled:cursor-not-allowed`}
           >
-            Submit Your Order
+            {t("submitYourOrder")}
           </button>
         )}
         {paymentMethod === "card" && (
@@ -419,7 +413,7 @@ const CheckOutForm = () => {
             style={checkOutButtonStyle}
             className={`px-4 py-1 rounded-lg mx-auto w-full inline-block mt-4 disabled:cursor-not-allowed`}
           >
-            Continue to payment Gateway
+            {t("continueToPaymentGetWay")}
           </button>
         )}
       </Form>
@@ -433,7 +427,7 @@ export const checkOutFormAction = async ({ request }) => {
 
   const cartItemsFromInput = JSON.parse(data.get("cart"));
   const cartItems = cartItemsFromInput.reduce((acc, currentItem) => {
-    acc.push(currentItem)  ;
+    acc.push(currentItem);
     return acc;
   }, []);
   const cartItemsTotalPrice = window.localStorage.getItem("cartTotalPrice");
@@ -484,24 +478,20 @@ export const checkOutFormAction = async ({ request }) => {
   };
   window.localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
- 
-  
-    const response = await fetch(`${baseURL}/orders/${userIdentifier}`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(order),
-    });
-    const responseData = await response.json();
- 
-    if (order.paymentMethod === "cash") {
-      return redirect("/paid");
-    }
-    if (order.paymentMethod === "card") {
-      window.localStorage.setItem("responseData", JSON.stringify(responseData));
-      return redirect("/paymentGateway");
-    }
-  
- 
+  const response = await fetch(`${baseURL}/orders/${userIdentifier}`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(order),
+  });
+  const responseData = await response.json();
+
+  if (order.paymentMethod === "cash") {
+    return redirect("/paid");
+  }
+  if (order.paymentMethod === "card") {
+    window.localStorage.setItem("responseData", JSON.stringify(responseData));
+    return redirect("/paymentGateway");
+  }
 };

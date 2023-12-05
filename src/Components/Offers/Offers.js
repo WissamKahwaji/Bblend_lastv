@@ -57,7 +57,9 @@ const Offers = () => {
         <h2 className={`text-sm md:text-4xl font-bold ${styles["play-font"]}`}>
           {t("Discounts")}
         </h2>
-        <Link to="/extra_1">{t("Check All")}</Link>
+        <Link className="text-xl font-semibold" to="/extra_1">
+          {t("Check All")}
+        </Link>
       </div>
       {!isCarousel && (
         <ul

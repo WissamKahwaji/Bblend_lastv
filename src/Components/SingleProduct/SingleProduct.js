@@ -11,7 +11,6 @@ import { Rating } from "@mui/material";
 import SizeSelector from "../UI/Selection/Selection";
 
 const SingleProduct = ({ data }) => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -72,12 +71,11 @@ const SingleProduct = ({ data }) => {
       weight: +weightBasedOnSize,
     };
     dispatch(cartActions.addToCart({ ...newCartEntryObject }));
-  
+
     toast("Your item has been added to your cart 🤩");
   };
 
   const cartData = useSelector((state) => state.cartSlice);
-
 
   const buyNowHandler = () => {
     const newCartEntryObject = {
@@ -92,7 +90,6 @@ const SingleProduct = ({ data }) => {
     };
 
     dispatch(cartActions.addToCart({ ...newCartEntryObject }));
-   
 
     // Use the useNavigate hook to redirect the user to the `/my_cart` page.
     navigate("/my_cart");
@@ -104,7 +101,7 @@ const SingleProduct = ({ data }) => {
     // Update the selectedImg state with the clicked image's source
     setSelectedImg(e.target.src);
   };
- 
+
   return (
     <SectionContainer>
       <div>
@@ -112,7 +109,11 @@ const SingleProduct = ({ data }) => {
           className={`flex   md:h-auto lg:h-[463px] overflow-hidden    flex-col md:flex-row justify-between w-full md:w-[80%] mx-auto gap-1`}
         >
           <div className={`  h-[300px]     lg:h-[463px] lg:w-full `}>
-            <img src={selectedImg} alt={data.title} className={`rounded-md h-full w-full`} />
+            <img
+              src={selectedImg}
+              alt={data.title}
+              className={`rounded-md h-full w-full`}
+            />
           </div>
           <div
             className={`flex  md:hidden items-center  p-2 rounded-lg !bg-opacity-60 overflow-x-auto overflow-y-hidden mt-4 md:mt-0 mb-4`}
@@ -128,7 +129,9 @@ const SingleProduct = ({ data }) => {
               />
             ))}
           </div>
-          <div className={` flex flex-col justify-between md:w-1/2 w-full  px-3`}>
+          <div
+            className={` flex flex-col justify-between md:w-1/2 w-full  px-3`}
+          >
             <div className={`flex flex-col`}>
               <h3 style={h3Style} className={`text-3xl font-semibold mb-4`}>
                 {data.titleAr
@@ -157,13 +160,14 @@ const SingleProduct = ({ data }) => {
                   readOnly
                 />
               </div>
-              {data.deepDetails[0].size !== "" && (
-                <SizeSelector
-                  deepDetails={data.deepDetails}
-                  selectedSize={selectedSize}
-                  onSelectSize={handleSizeChange}
-                />
-              )}
+              {data.deepDetails?.[0]?.size &&
+                data.deepDetails[0]?.size !== "" && (
+                  <SizeSelector
+                    deepDetails={data.deepDetails}
+                    selectedSize={selectedSize}
+                    onSelectSize={handleSizeChange}
+                  />
+                )}
 
               <h4 className={`mb-4 text-xl`}>
                 {t("Price")} :{" "}
@@ -192,11 +196,9 @@ const SingleProduct = ({ data }) => {
                   {t("Buy Now")}
                 </button>
               </div>
-
-           
             </div>
             <div
-              className={`hidden md:flex items-center p-2 rounded-lg !bg-opacity-60 mt-4 md:mt-0`}
+              className={`hidden md:grid grid-cols-3 gap-1 items-center p-2 rounded-lg !bg-opacity-60 mt-4 md:mt-0`}
               style={imgContainerStyle}
             >
               {data.imgs.map((ele, i) => (
@@ -205,7 +207,7 @@ const SingleProduct = ({ data }) => {
                   src={ele}
                   key={i}
                   alt={i}
-                  className={`w-16 md:w-32 rounded-2xl mx-2 last:!mr-0 hover:scale-150  duration-300 cursor-pointer`}
+                  className={`rounded-2xl w-full aspect-video last:!mr-0 hover:scale-150  duration-300 cursor-pointer`}
                 />
               ))}
             </div>

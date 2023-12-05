@@ -7,7 +7,7 @@ const initialState = [
   },
   {
     title: "Products",
-    path: "/Products",
+    path: "/Products?type=",
   },
   {
     title: "About Us",

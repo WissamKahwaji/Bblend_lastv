@@ -13,16 +13,16 @@ const LanguageSwitcher = () => {
 
     localStorage.setItem("selectedLanguage", selectedLanguage);
     localStorage.setItem("direction", direction);
-    dispatch(changeLang({lang:selectedLanguage,direction:direction}));
+    dispatch(changeLang({ lang: selectedLanguage, direction: direction }));
     i18n.changeLanguage(selectedLanguage);
     window.localStorage.setItem("language", selectedLanguage);
     document.documentElement.dir = direction;
   };
 
   // Get the detected language from i18n.language
-
-    // Get the detected language from i18n.language or retrieve from local storage
-    const detectedLanguage =
+  console.log(i18n.language);
+  // Get the detected language from i18n.language or retrieve from local storage
+  const detectedLanguage =
     i18n.language || localStorage.getItem("selectedLanguage");
 
   // Get the direction from local storage

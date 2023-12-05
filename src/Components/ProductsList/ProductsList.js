@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import SingleProductCard from "../UI/SingleProductCard/SingleProductCard";
+import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 
 const ProductsList = ({ data }) => {
   const [titleFilter, setTitleFilter] = useState("");
-  const [typeFilter, setTypeFilter] = useState("");
+  // const [typeFilter, setTypeFilter] = useState("");
   const [isPackages, setIsPackage] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const typeFilter = searchParams.get("type");
   const { t } = useTranslation();
   // Filter the data based on the title and type filters
   const filteredData = data.filter((product) => {
@@ -58,7 +61,7 @@ const ProductsList = ({ data }) => {
             style={inputsStyle}
             className={`outline-none p-2 rounded-md`}
             value={isPackages ? "Package" : typeFilter}
-            onChange={(e) => setTypeFilter(e.target.value)}
+            onChange={(e) => setSearchParams({ type: e.target.value })}
           >
             <option value="">{t("All Types")}</option>
 

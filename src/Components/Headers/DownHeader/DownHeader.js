@@ -22,7 +22,7 @@ const DownHeader = () => {
   const cartLengthStyle = {
     backgroundColor: colorsData.mainColor,
   };
-
+  console.log(navLinksData);
   const location = useLocation(); // Access the current route location
 
   useEffect(() => {

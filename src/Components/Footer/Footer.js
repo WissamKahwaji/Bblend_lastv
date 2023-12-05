@@ -17,7 +17,7 @@ const Footer = ({ data }) => {
 
   const { t, i18n } = useTranslation();
   const contactInfoData = useSelector((state) => state.contactInfoSlice);
-
+  console.log(contactInfoData);
   // Function to format the phone number based on language direction
   const formatPhoneNumber = (phoneNumber) => {
     if (i18n.language === "ar") {
@@ -92,7 +92,10 @@ const Footer = ({ data }) => {
             {t("Contact Us")}
           </h5>
           <ul>
-            <li className={`mb-2`}> {formatPhoneNumber(footerData.fourth)}</li>
+            <li className={`mb-2`}>
+              {" "}
+              {formatPhoneNumber(contactInfoData.callUs)}
+            </li>
             <li className={`mb-2`}>{t(footerData.fifth)}</li>
             <li className={`flex items-center `}>
               <a

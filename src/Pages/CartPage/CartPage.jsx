@@ -8,15 +8,16 @@ import CartInfo from "../../Components/CartInfo/CartInfo";
 import { ToastContainer, toast } from "react-toastify";
 import useCalculateTotalPrice from "../../Hooks/useCalculateTotalPrice";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CartPage = () => {
+  const { t } = useTranslation();
   const cartData = useSelector((state) => state.cartSlice);
   const totalPrice = useCalculateTotalPrice();
   useEffect(() => {
     const total = totalPrice();
     localStorage.setItem("cartTotalPrice", total);
   }, [cartData, totalPrice]);
-
 
   const notifyTheUser = () => {
     toast("Your selected item has been deleted 😥");
@@ -49,9 +50,9 @@ const CartPage = () => {
           <Link
             to="/checkOutForm"
             style={checkOutButtonStyle}
-            className={`px-4 py-1 rounded-lg`}
+            className={`px-4 py-1 capitalize rounded-lg`}
           >
-            Check Out
+            {t("checkOut")}
           </Link>
         )}
       </SectionContainer>
