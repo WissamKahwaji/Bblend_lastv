@@ -1,30 +1,17 @@
-import React, { useEffect } from "react";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  useLocation,
-} from "react-router-dom";
+import React, { useEffect, Suspense, lazy } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { I18nextProvider, initReactI18next } from "react-i18next";
+import i18n from "i18next";
 import Root, { rootLoader } from "./Pages/Root/Root";
-import HomePage from "./Pages/HomePage/HomePage";
-import ProductsPage, {
-  productsPageLoader,
-} from "./Pages/ProductsPage/ProductsPage";
-import AboutUsPage, {
-  aboutUsPageLoader,
-} from "./Pages/AboutUsPage/AboutUsPage";
-import ExtraPageOne from "./Pages/ExtraPageOne/ExtraPageOne";
-import ExtraPageTwo, {
-  extraPageTwoLoader,
-} from "./Pages/ExtraPageTwo/ExtraPageTwo";
-import ExtraPageThree, {
-  extraPageThreeLoader,
-} from "./Pages/ExtraPageThree/ExtraPageThree";
-import ContactUsPage, {
-  contactUsPageLoader,
-} from "./Pages/ContactUsPage/ContactUs";
-import useApiFetch from "./Hooks/useApiFetch";
-import { baseURL } from "./API/baseURL";
-
+import LoadingPage from "./Pages/LoadingPage/LoadingPage";
+import { productsPageLoader } from "./Pages/ProductsPage/ProductsPage";
+import { aboutUsPageLoader } from "./Pages/AboutUsPage/AboutUsPage";
+import { extraPageTwoLoader } from "./Pages/ExtraPageTwo/ExtraPageTwo";
+import { extraPageThreeLoader } from "./Pages/ExtraPageThree/ExtraPageThree";
+import { contactUsPageLoader } from "./Pages/ContactUsPage/ContactUs";
+import { singleProductPageLoaderFromProductsPage } from "./Pages/ProductsPage/singleProductPageLoaderFromProductsPage";
 import { colorsActions } from "./Store/colorsSlice";
 import { navLinksActions } from "./Store/navLinksSlice";
 import { sliderImgsActions } from "./Store/sliderImgsSlice";
@@ -33,41 +20,43 @@ import { brandingActions } from "./Store/brandingSlice";
 import { categoryOneActions } from "./Store/categoryOneSlice";
 import { categoryTwoActions } from "./Store/categoryTwoSlice";
 import { middleActions } from "./Store/middleSlice";
-import SingleProductPage, {
-  singleProductPageLoader,
-} from "./Pages/SingleProductPage/SingleProductPage";
-import { singleProductPageLoaderFromProductsPage } from "./Pages/ProductsPage/singleProductPageLoaderFromProductsPage";
-import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "./Store/cartSlice";
 import CartPage from "./Pages/CartPage/CartPage";
-import collectionsSlice, { collectionsActions } from "./Store/collectionsSlice";
+import { extraPageOneSingleItemLoader } from "./Pages/ExtraPageOne/extraPageOneSingleItem";
+import { collectionsActions } from "./Store/collectionsSlice";
 import { categoryThreeActions } from "./Store/categoryThreeSlice";
 import { contactInfoActions } from "./Store/contactInfoSlice";
 import { socialActions } from "./Store/socialSlice";
-import { I18nextProvider, initReactI18next } from "react-i18next";
-import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-// Import translations
-import translationEn from "./Locales/en/translation.json";
-import translationAr from "./Locales/ar/translation.json";
-import CheckOutForm, {
-  checkOutFormAction,
-} from "./Pages/CheckOutForm/CheckOutForm";
-import PaymentGatewayPage from "./Pages/PaymentGatewayPage/PaymentGatewayPage";
-import LastCheckOutForm from "./Pages/LastCheckOutForm/LastCheckOutForm";
-import MyOrdersPage, {
-  myOrdersPageLoader,
-} from "./Pages/MyOrdersPage/MyOrdersPage";
+import { checkOutFormAction } from "./Pages/CheckOutForm/CheckOutForm";
+import { myOrdersPageLoader } from "./Pages/MyOrdersPage/MyOrdersPage";
 import { myOrdersItemAction } from "./Components/MyOrdersItem/MyOrdersItem";
-import AfterPayment from "./Pages/AfterPayment/AfterPayment";
 import { footerActions } from "./Store/footerSlice";
 import { mainLogoActions } from "./Store/mainLogoSlice";
-import ExtraPageFour, {
-  extraFourPageLoader,
-} from "./Pages/ExtraPageFour/ExtraPageFour";
+import { extraFourPageLoader } from "./Pages/ExtraPageFour/ExtraPageFour";
 import { offersActions } from "./Store/offersSlice";
-import { extraPageOneSingleItemLoader } from "./Pages/ExtraPageOne/extraPageOneSingleItem";
-
+import useApiFetch from "./Hooks/useApiFetch";
+import { baseURL } from "./API/baseURL";
+import translationEn from "./Locales/en/translation.json";
+import translationAr from "./Locales/ar/translation.json";
+const HomePage = lazy(() => import("./Pages/HomePage/HomePage"));
+const ProductsPage = lazy(() => import("./Pages/ProductsPage/ProductsPage"));
+const AboutUsPage = lazy(() => import("./Pages/AboutUsPage/AboutUsPage"));
+const ExtraPageOne = lazy(() => import("./Pages/ExtraPageOne/ExtraPageOne"));
+const ExtraPageTwo = lazy(() => import("./Pages/ExtraPageTwo/ExtraPageTwo"));
+const ExtraPageThree = lazy(() =>
+  import("./Pages/ExtraPageThree/ExtraPageThree")
+);
+const ExtraPageFour = lazy(() => import("./Pages/ExtraPageFour/ExtraPageFour"));
+const ContactUsPage = lazy(() => import("./Pages/ContactUsPage/ContactUs"));
+const SingleProductPage = lazy(() =>
+  import("./Pages/SingleProductPage/SingleProductPage")
+);
+const CheckOutForm = lazy(() => import("./Pages/CheckOutForm/CheckOutForm"));
+const LastCheckOutForm = lazy(() =>
+  import("./Pages/LastCheckOutForm/LastCheckOutForm")
+);
+const MyOrdersPage = lazy(() => import("./Pages/MyOrdersPage/MyOrdersPage"));
+const AfterPayment = lazy(() => import("./Pages/AfterPayment/AfterPayment"));
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -295,7 +284,9 @@ const App = () => {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <RouterProvider router={router} />
+      <Suspense fallback={<LoadingPage />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </I18nextProvider>
   );
 };

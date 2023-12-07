@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const MyOrdersPage = () => {
   const data = useLoaderData();
-  
+
   const { t } = useTranslation();
   return (
     <PageContainer>
@@ -39,7 +39,7 @@ export const myOrdersPageLoader = async () => {
     const userIdentifier = JSON.parse(
       window.localStorage.getItem("userIdentifier")
     );
-    const response = await fetch(`${baseURL}/orders/${userIdentifier}`);
+    const response = await fetch(`${baseURL}/orders/user/${userIdentifier}`);
     const responseData = await response.json();
     const dataArray = Object.keys(responseData).map((key) => ({
       id: key,
