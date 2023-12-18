@@ -13,7 +13,7 @@ const CategoryThree = () => {
   return (
     <CategoryUI
       className={`mt-44`}
-      CategoryUIData={categoryThreeData.products}
+      CategoryUIData={categoryThreeData}
       categoryNumber="CategoryThree"
       path="/products"
     />

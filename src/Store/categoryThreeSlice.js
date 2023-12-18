@@ -10,6 +10,7 @@ const categoryThreeSlice = createSlice({
   initialState,
   reducers: {
     storeCategoryThree(state, action) {
+      console.log(action.payload, "inside slice");
       return action.payload;
     },
   },

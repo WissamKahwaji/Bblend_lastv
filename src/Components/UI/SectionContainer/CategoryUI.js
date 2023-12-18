@@ -23,16 +23,15 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
   const windowWidth = useWindowWidth();
   const breakpoint = 1020;
   const items = CategoryUIData;
-  console.log(items, "items", path);
   // Slice the array based on the window width and the breakpoint
   const slicedItems =
     windowWidth > breakpoint ? items?.slice(0, 3) : items?.slice(0, 2);
   return (
     <Container className={`mt-4 md:mt-16 ${className}`}>
       <div className={`flex justify-between items-center mb-4`}>
-        <h2 className={`text-sm md:text-4xl font-bold ${styles["play-font"]}`}>
+        {/* <h2 className={`text-sm md:text-4xl font-bold ${styles["play-font"]}`}>
           {t(CategoryUIData.title)}
-        </h2>
+        </h2> */}
         <Link className="text-xl font-semibold" to={path}>
           {t("Check All")}
         </Link>
@@ -40,7 +39,7 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
       <ul
         className={`grid lg:grid-cols-3  grid-cols-2 justify-center gap-1 items-center   `}
       >
-        {slicedItems.map((ele, i) => (
+        {slicedItems?.map((ele, i) => (
           <li className="mx-auto w-full" key={i}>
             <SingleProductCard
               id={ele.id}

@@ -40,7 +40,7 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
       <ul
         className={`grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center gap-0 items-center   `}
       >
-        {slicedItems.map((ele, i) => (
+        {slicedItems?.map((ele, i) => (
           <li className="mx-auto" key={i}>
             <SingleProductCard
               id={ele.id}
