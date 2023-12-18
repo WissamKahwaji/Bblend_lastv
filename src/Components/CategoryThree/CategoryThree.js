@@ -9,10 +9,11 @@ import { useSelector } from "react-redux";
 
 const CategoryThree = () => {
   const categoryThreeData = useSelector((state) => state.categoryThreeSlice);
+  console.log(categoryThreeData, "categoryThreeData");
   return (
     <CategoryUI
       className={`mt-44`}
-      CategoryUIData={categoryThreeData}
+      CategoryUIData={categoryThreeData.products}
       categoryNumber="CategoryThree"
       path="/products"
     />

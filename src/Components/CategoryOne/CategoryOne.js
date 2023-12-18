@@ -5,7 +5,7 @@ import CategoryUI from "../UI/SectionContainer/CategoryUI";
 const CategoryOne = () => {
   const { t } = useTranslation();
   const categoryOneData = useSelector((state) => state.categoryOneSlice);
-
+  console.log(categoryOneData, "categoryOneData");
   return (
     <CategoryUI
       CategoryUIData={categoryOneData}

@@ -23,10 +23,10 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
   const windowWidth = useWindowWidth();
   const breakpoint = 1020;
   const items = CategoryUIData;
-
+  console.log(items, "items", path);
   // Slice the array based on the window width and the breakpoint
   const slicedItems =
-    windowWidth > breakpoint ? items.slice(0, 3) : items.slice(0, 2);
+    windowWidth > breakpoint ? items?.slice(0, 3) : items?.slice(0, 2);
   return (
     <Container className={`mt-4 md:mt-16 ${className}`}>
       <div className={`flex justify-between items-center mb-4`}>
