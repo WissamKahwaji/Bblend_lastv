@@ -46,12 +46,12 @@ const ContactUsPage = () => {
         style={contactDivStyle}
         className={`flex flex-col items-center my-8 pb-4`}
       >
-        <p className={`text-2xl font-medium my-1`}>
-          <span>{t("Mail-ID")} : </span>
+        {/* <p className={`text-2xl font-medium my-1`}>
+         <span>{t("Mail-ID")} : </span>
           <span style={contactStyles} className={`font-normal`}>
             {data.email}
           </span>
-        </p>
+        </p> */}
         <p className={`text-2xl font-medium my-1`}>
           <span>{t("Mobile Number")} : </span>
           <span style={contactStyles} className={`font-normal font-sans text-base lg:text-lg`}>
