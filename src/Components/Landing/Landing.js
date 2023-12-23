@@ -8,15 +8,20 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 const Landing = () => {
   const brandingData = useSelector((state) => state.brandingSlice);
-  
+
   const { t } = useTranslation();
   return (
     <div className={`relative`}>
       {/* <div className={`mt-[3rem] lg:mt-[7rem] mx-auto`}>
         <FullWidthSlider />
       </div> */}
-      <div className={`mt-[6rem] lg:mt-[10rem] mx-auto`}>
-        <img src='https://i.imgur.com/bU4I23w.png' alt="one img" className="  w-full h-full md:h-[650px] " />
+      <div className={`relative mt-[6rem] lg:mt-[10rem] mx-auto`}>
+        <div className="absolute w-full h-full bg-black/40"></div>
+        <img
+          src="/landing.jpg"
+          alt="one img"
+          className="  w-full h-full md:h-[650px] "
+        />
       </div>
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white flex items-center flex-col w-full`}
@@ -26,7 +31,9 @@ const Landing = () => {
         >
           {t(brandingData.BrandName)}
         </h1>
-        <p className={`text-xs lg:text-xl font-normal text-center mb-2`}>
+        <p
+          className={`text-xs lg:text-2xl px-2 md:px-16 font-normal  text-center mb-2`}
+        >
           {t(brandingData.brandDescription)}
         </p>
         <Link

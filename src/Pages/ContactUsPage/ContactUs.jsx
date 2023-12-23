@@ -28,7 +28,10 @@ const ContactUsPage = () => {
   const formatPhoneNumber = (phoneNumber) => {
     if (i18n.language === "ar") {
       // For RTL languages like Arabic
-      return String(phoneNumber).replace(/(\d{3})(\d{3})(\d{3})(\d{3})/, "$4 $3 $2 $1+");
+      return String(phoneNumber).replace(
+        /(\d{3})(\d{3})(\d{3})(\d{3})/,
+        "$4 $3 $2 $1+"
+      );
     } else {
       // For LTR languages
       return String(phoneNumber).replace(
@@ -40,21 +43,23 @@ const ContactUsPage = () => {
 
   return (
     <PageContainer>
-     
       <PageHeading pageHeadingTitle={t("Contact Us")} />
       <div
         style={contactDivStyle}
         className={`flex flex-col items-center my-8 pb-4`}
       >
         {/* <p className={`text-2xl font-medium my-1`}>
-         <span>{t("Mail-ID")} : </span>
+          <span>{t("Mail-ID")} : </span>
           <span style={contactStyles} className={`font-normal`}>
             {data.email}
           </span>
         </p> */}
         <p className={`text-2xl font-medium my-1`}>
           <span>{t("Mobile Number")} : </span>
-          <span style={contactStyles} className={`font-normal font-sans text-base lg:text-lg`}>
+          <span
+            style={contactStyles}
+            className={`font-normal font-sans text-base lg:text-lg`}
+          >
             {formatPhoneNumber(data.callUs)}
           </span>
         </p>
@@ -89,5 +94,4 @@ export const contactUsPageLoader = async () => {
   const response = await fetch(`${baseURL}/contactUs`);
   const data = await response.json();
   return data;
- 
 };
