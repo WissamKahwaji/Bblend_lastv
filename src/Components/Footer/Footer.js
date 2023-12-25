@@ -92,7 +92,7 @@ const Footer = ({ data }) => {
             {t("Contact Us")}
           </h5>
           <ul>
-            <li className={`mb-2`}>
+            <li dir="ltr" className={`mb-2`}>
               {" "}
               {formatPhoneNumber(contactInfoData.callUs)}
             </li>

@@ -54,11 +54,12 @@ const ContactUsPage = () => {
             {data.email}
           </span>
         </p> */}
-        <p className={`text-2xl font-medium my-1`}>
+        <p className={`text-2xl  font-medium my-1`}>
           <span>{t("Mobile Number")} : </span>
           <span
+            dir="ltr"
             style={contactStyles}
-            className={`font-normal font-sans text-base lg:text-lg`}
+            className={`font-normal  font-sans text-base lg:text-lg`}
           >
             {formatPhoneNumber(data.callUs)}
           </span>

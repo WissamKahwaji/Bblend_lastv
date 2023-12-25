@@ -106,26 +106,26 @@ const SingleProduct = ({ data }) => {
     <SectionContainer>
       <div>
         <div
-          className={`flex   md:h-auto lg:h-[463px] overflow-hidden    flex-col md:flex-row justify-between w-full md:w-[80%] mx-auto gap-1`}
+          className={`flex   md:h-auto lg:h-[463px]     flex-col md:flex-row justify-between w-full md:w-[80%] mx-auto gap-1`}
         >
-          <div className={`  h-[300px]     lg:h-[463px] lg:w-full `}>
+          <div className={` w-full `}>
             <img
               src={selectedImg}
               alt={data.title}
-              className={`rounded-md h-full w-full`}
+              className={`rounded-md aspect-square object-cover h-full w-full`}
             />
           </div>
           <div
-            className={`flex  md:hidden items-center  p-2 rounded-lg !bg-opacity-60 overflow-x-auto overflow-y-hidden mt-4 md:mt-0 mb-4`}
+            className={`flex  md:hidden items-center gap-4  p-2 rounded-lg !bg-opacity-60 flex-nowrap overflow-x-auto overflow-y-hidden mt-4 md:mt-0 mb-4`}
             style={imgContainerStyle}
           >
-            {data.imgs.map((ele, i) => (
+            {[data.img, ...data?.imgs].map((ele, i) => (
               <img
                 onClick={imgClickHandler}
                 src={ele}
                 key={i}
                 alt={i}
-                className={`w-16 md:w-32 rounded-2xl mx-2 last:!mr-0 hover:scale-150  duration-300 cursor-pointer`}
+                className={`rounded-2xl w-32 h-32 aspect-square object-cover last:!mr-0 hover:scale-105  duration-300 cursor-pointer`}
               />
             ))}
           </div>
@@ -198,16 +198,16 @@ const SingleProduct = ({ data }) => {
               </div>
             </div>
             <div
-              className={`hidden md:grid grid-cols-3 gap-1 items-center p-2 rounded-lg !bg-opacity-60 mt-4 md:mt-0`}
+              className={`hidden md:flex overflow-x-auto overflow-y-hidden flex-nowrap  gap-1 items-center p-2 rounded-lg !bg-opacity-60 mt-4 md:mt-0`}
               style={imgContainerStyle}
             >
-              {data.imgs.map((ele, i) => (
+              {[data.img, ...data?.imgs].map((ele, i) => (
                 <img
                   onClick={imgClickHandler}
                   src={ele}
                   key={i}
                   alt={i}
-                  className={`rounded-2xl w-full aspect-video last:!mr-0 hover:scale-150  duration-300 cursor-pointer`}
+                  className={`rounded-2xl w-40 h-40   aspect-square object-cover last:!mr-0 hover:scale-10  5  duration-300 cursor-pointer`}
                 />
               ))}
             </div>

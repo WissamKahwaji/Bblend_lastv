@@ -37,7 +37,7 @@ const Landing = () => {
           {t(brandingData.brandDescription)}
         </p>
         <Link
-          to="/products"
+          to="/products?type="
           className={`px-2 py-1 text-md bg-white text-black hover:text-white hover:bg-black duration-200 rounded-sm`}
         >
           {t("Our Products")}

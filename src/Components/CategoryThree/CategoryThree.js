@@ -15,7 +15,7 @@ const CategoryThree = () => {
       className={`mt-44`}
       CategoryUIData={categoryThreeData}
       categoryNumber="CategoryThree"
-      path="/products"
+      path="/products?type=Accessories"
     />
   );
 };

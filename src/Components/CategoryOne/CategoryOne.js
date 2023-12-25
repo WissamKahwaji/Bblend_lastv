@@ -10,7 +10,7 @@ const CategoryOne = () => {
     <CategoryUI
       CategoryUIData={categoryOneData}
       categoryNumber="CategoryOne"
-      path="/products"
+      path="/products?type="
     />
   );
 };

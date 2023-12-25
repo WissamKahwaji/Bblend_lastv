@@ -14,7 +14,6 @@ const UpHeader = () => {
   const colorsData = useSelector((state) => state.colorsSlice);
   const cartData = useSelector((state) => state.cartSlice);
 
-  
   const styles = {
     "border-bottom-color": colorsData.mainColor,
   };
@@ -22,7 +21,7 @@ const UpHeader = () => {
     backgroundColor: colorsData.mainColor,
   };
   const contactInfoData = useSelector((state) => state.contactInfoSlice);
-  
+
   return (
     <div className={`hidden lg:block`}>
       <Container
@@ -52,7 +51,10 @@ const UpHeader = () => {
           </a>
         </div>
         <div className={`flex-1 flex justify-end items-center`}>
-          <span  className="text-[#767676] text-[0.7rem]"> {t("Language")} :</span>
+          <span className="text-[#767676] text-[0.7rem]">
+            {" "}
+            {t("Language")} :
+          </span>
           <LanguageSwitcher />
           <div className={`flex items-center`}>
             <Link to="/my_cart" className={`relative`}>
