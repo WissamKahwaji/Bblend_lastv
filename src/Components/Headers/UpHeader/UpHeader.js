@@ -36,7 +36,7 @@ const UpHeader = () => {
             <span className={`text-sm font-medium`}>{t("Call Us")}</span>
           </a>
           <a
-            href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp?.replace(
+            href={`https://wa.me/${contactInfoData.whatsapp?.replace(
               /\s/g,
               ""
             )}`}

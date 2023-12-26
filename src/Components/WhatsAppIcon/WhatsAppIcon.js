@@ -10,10 +10,7 @@ const WhatsAppIcon = () => {
   const contactInfoData = useSelector((state) => state.contactInfoSlice);
   return (
     <a
-      href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp?.replace(
-        /\s/g,
-        ""
-      )}`}
+      href={`https://wa.me/${contactInfoData.whatsapp?.replace(/\s/g, "")}`}
       target="_blank"
       rel="noreferrer"
       className={`fixed bottom-24 right-4 z-50 text-5xl cursor-pointer`}

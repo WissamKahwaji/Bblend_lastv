@@ -67,10 +67,7 @@ const ContactUsPage = () => {
         <div className={`flex items-center my-1`}>
           <a
             style={iconsStyle}
-            href={`https://api.whatsapp.com/send?phone=${data.whatsapp.replace(
-              /\s/g,
-              ""
-            )}`}
+            href={`https://wa.me/${data.whatsapp.replace(/\s/g, "")}`}
             className={`flex items-center`}
           >
             <BsWhatsapp className={`text-4xl mr-1`} />

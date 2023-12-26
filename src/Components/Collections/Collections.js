@@ -9,18 +9,20 @@ const Collections = () => {
   return (
     <Container className={`block`}>
       {collectionsData.length > 0 && (
-        <div className={` grid  md:grid-cols-2    w-full h-auto md:h-[419px] gap-2  md:mb-20 `}>
+        <div
+          className={` grid  md:grid-cols-2    w-full h-auto md:h-[419px] gap-2  md:mb-20 `}
+        >
           <div className={`relative h-[302px] md:h-[419px] col-span-1  `}>
             <img
               className={`h-full w-full object-cover bg-white`}
               src={collectionsData[0].img}
               alt={collectionsData[0].description}
             />
-            <p
+            {/* <p
               className={`absolute w-full bottom-0  py-2 text-center text-white bg-black bg-opacity-50 ${styles["play-font"]}`}
             >
               {collectionsData[0].description}
-            </p>
+            </p> */}
           </div>
           <div
             className={`grid grid-rows-2 grid-cols-2   col-span-1 gap-3 h-[302px] md:h-[419px]    `}
@@ -34,11 +36,11 @@ const Collections = () => {
                   src={collectionsData[1].img}
                   alt={collectionsData[1].description}
                 />
-                <p
+                {/* <p
                   className={`absolute w-full bottom-0 py-2 text-center text-white bg-black bg-opacity-50 ${styles["play-font"]}`}
                 >
                   {collectionsData[1].description}
-                </p>
+                </p> */}
               </div>
               <div className={` relative row-span-2 col-span-1 `}>
                 <img
@@ -46,11 +48,11 @@ const Collections = () => {
                   src={collectionsData[2].img}
                   alt={collectionsData[2].description}
                 />
-                <p
+                {/* <p
                   className={`absolute w-full bottom-0  py-2 text-center text-white bg-black bg-opacity-50 ${styles["play-font"]}`}
                 >
                   {collectionsData[2].description}
-                </p>
+                </p> */}
               </div>
             </div>
             <div className={`relative row-span-1 col-span-2   `}>
@@ -59,11 +61,11 @@ const Collections = () => {
                 src={collectionsData[3].img}
                 alt={collectionsData[3].description}
               />
-              <p
+              {/* <p
                 className={`absolute w-full bottom-0  py-2 text-center text-white bg-black bg-opacity-50 ${styles["play-font"]}`}
               >
                 {collectionsData[3].description}
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

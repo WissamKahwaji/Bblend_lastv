@@ -80,7 +80,7 @@ const DownHeader = () => {
             <span className={`text-sm font-medium`}>{t("Email Message")}</span>
           </a>
           <a
-            href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp}`}
+            href={`https://wa.me/${contactInfoData.whatsapp}`}
             className={`flex items-center`}
           >
             <BsWhatsapp className={`text-2xl mr-1`} />

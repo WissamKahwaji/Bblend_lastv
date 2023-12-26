@@ -111,7 +111,7 @@ const Footer = ({ data }) => {
                 />
               </a>
               <a
-                href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp?.replace(
+                href={`https://wa.me/${contactInfoData.whatsapp?.replace(
                   /\s/g,
                   ""
                 )}`}

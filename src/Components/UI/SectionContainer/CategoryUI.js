@@ -46,7 +46,13 @@ const CategoryUI = ({ CategoryUIData, path, categoryNumber, className }) => {
               path={`/products/${ele._id}`}
               src={ele.img}
               alt={ele.title}
-              title={ele.title}
+              title={
+                ele.titleAr
+                  ? window.localStorage.getItem("language") === "en"
+                    ? ele.title
+                    : ele.titleAr
+                  : t(ele.title)
+              }
               price={ele.deepDetails.first.price}
               size={ele.deepDetails.first.size}
               desc={ele.desc}
