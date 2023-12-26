@@ -17,11 +17,15 @@ const FAQItem = ({ data, index }) => {
     borderColor: colorsData.mainColor,
   };
 
-  let formattedContent = data.faqContent.replace(
-    /\d-/g,
+  // formattedContent = data.faqContent.replace(
+  //   /\d-/g,
+  //   (match) => `<br><br/>${match}`
+  // );
+  let formattedContent = t(data.faqContent).replace(
+    /\n/g,
     (match) => `<br><br/>${match}`
   );
-  formattedContent = t(`${formattedContent}`);
+
   const faqItemStyle = {
     border: `1px solid ${colorsData.mainColor}`,
   };
@@ -35,9 +39,10 @@ const FAQItem = ({ data, index }) => {
     }
   };
 
-
   return (
-    <div className={`flex flex-col py-2   md:mx-auto md:w-[70%] rounded-md col-span-1    `}>
+    <div
+      className={`flex flex-col py-2   md:mx-auto md:w-[70%] rounded-md col-span-1    `}
+    >
       <div id="accordionExample">
         <div className="rounded-t-lg   bg-white  ">
           <h2
