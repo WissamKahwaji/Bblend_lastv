@@ -7,7 +7,6 @@ import { useLoaderData } from "react-router-dom";
 const SingleProductPage = () => {
   const data = useLoaderData();
 
-
   return (
     <PageContainer>
       <SingleProduct data={data} />
@@ -19,12 +18,10 @@ export default SingleProductPage;
 export const singleProductPageLoader = async ({ params }) => {
   // const categoryNumber = params.categoryNumber;
   const productId = params.productID;
-  const response = await fetch(
-    `${baseURL}/offers/${productId}`
-  );
+  const response = await fetch(`${baseURL}/offers/${productId}`);
   const data = await response.json();
-  console.log(data)
-  return data
+  console.log(data);
+  return data;
   // Convert the imgs object into an array of image URLs
   // const imgsArray = Object.values(data.imgs);
 
@@ -43,8 +40,5 @@ export const singleProductPageLoader = async ({ params }) => {
   // // Replace deepDetails object with deepDetailsArray in the data object
   // data.deepDetails = deepDetailsArray;
 
-  
-
-
-  return [];
+  // return [];
 };

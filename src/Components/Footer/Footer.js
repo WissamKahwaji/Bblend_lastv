@@ -67,7 +67,7 @@ const Footer = ({ data }) => {
           <ul>
             {data.slice(1, 4).map((ele) => (
               <li className={`mb-2`}>
-                <Link to={`Products/${ele.id}`}>{t(ele.title)}</Link>
+                <Link to={`Products/${ele._id}`}>{t(ele.title)}</Link>
               </li>
             ))}
           </ul>
