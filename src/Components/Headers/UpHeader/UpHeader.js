@@ -36,7 +36,10 @@ const UpHeader = () => {
             <span className={`text-sm font-medium`}>{t("Call Us")}</span>
           </a>
           <a
-            href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp}`}
+            href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp?.replace(
+              /\s/g,
+              ""
+            )}`}
             className={`flex items-center`}
           >
             <BsWhatsapp className={`text-2xl mx-1`} />

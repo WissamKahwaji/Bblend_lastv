@@ -106,9 +106,11 @@ const SingleProduct = ({ data }) => {
     <SectionContainer>
       <div>
         <div
-          className={`flex   md:h-auto lg:h-[463px]     flex-col md:flex-row justify-between w-full md:w-[80%] mx-auto gap-1`}
+          className={`flex  flex-col md:flex-row justify-between w-full md:w-[80%] mx-auto gap-1`}
         >
-          <div className={` w-full `}>
+          <div
+            className={`w-w-full h-full  md:w-[344px] md:h-[344px]  lg:w-[590px] lg:h-[590px] `}
+          >
             <img
               src={selectedImg}
               alt={data.title}

@@ -40,6 +40,7 @@ const Footer = ({ data }) => {
   const iconStyles = {
     color: colorsData.navLinksColor,
   };
+
   return (
     <Container
       className={`flex justify-between flex-col bg-[#221100] text-white !py-12`}
@@ -110,7 +111,10 @@ const Footer = ({ data }) => {
                 />
               </a>
               <a
-                href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp}`}
+                href={`https://api.whatsapp.com/send?phone=${contactInfoData.whatsapp?.replace(
+                  /\s/g,
+                  ""
+                )}`}
                 className={`flex items-center`}
               >
                 <BsWhatsapp
