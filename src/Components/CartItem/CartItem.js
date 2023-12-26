@@ -38,7 +38,6 @@ const CartItem = ({
       img: src,
     };
     dispatch(cartActions.addToCart({ ...newCartEntryObject }));
-    
   };
   const decreaseQuantityHandler = () => {
     const newCartEntryObject = {
@@ -46,7 +45,6 @@ const CartItem = ({
       size: size,
     };
     dispatch(cartActions.decreaseQuantity({ ...newCartEntryObject }));
-    
   };
   return (
     <div
@@ -59,6 +57,7 @@ const CartItem = ({
       <div className={`flex flex-col items-center  mt-4 md:mt-0`}>
         <h3 style={textStyle} className={`text-lg  md:text-2xl  font-semibold`}>
           {itemTitle}
+          <span> ({size})</span>
         </h3>
         <div style={textStyle} className={`flex items-center`}>
           <span className={`text-2xl font-medium`}>{price} AED</span>{" "}
