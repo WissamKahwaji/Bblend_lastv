@@ -11,6 +11,7 @@ import { Rating } from "@mui/material";
 import SizeSelector from "../UI/Selection/Selection";
 
 const SingleProduct = ({ data }) => {
+  const [selectedImg, setSelectedImg] = useState(data.img); // Initialize selectedImg with the default image
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -67,7 +68,7 @@ const SingleProduct = ({ data }) => {
       desc: data.desc,
       quantity: 1,
       size: selectedSize,
-      img: data.img,
+      img: selectedImg,
       weight: +weightBasedOnSize,
     };
     dispatch(cartActions.addToCart({ ...newCartEntryObject }));
@@ -94,8 +95,6 @@ const SingleProduct = ({ data }) => {
     // Use the useNavigate hook to redirect the user to the `/my_cart` page.
     navigate("/my_cart");
   };
-
-  const [selectedImg, setSelectedImg] = useState(data.img); // Initialize selectedImg with the default image
 
   const imgClickHandler = (e) => {
     // Update the selectedImg state with the clicked image's source
